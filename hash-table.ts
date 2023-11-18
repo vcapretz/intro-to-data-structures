@@ -20,7 +20,13 @@ export class HashTable<T> {
     }
   }
 
-  remove() {}
+  remove(key: string) {
+    const index = this._hash(key);
+
+    if (this._storage[index]) {
+      this._storage[index] = this._storage[index].filter(([k]) => k !== key);
+    }
+  }
 
   retrieve(key: string): T | null {
     const index = this._hash(key);
